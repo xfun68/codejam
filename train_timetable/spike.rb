@@ -1,38 +1,44 @@
 #!/usr/bin/env ruby
 
-require 'rexml/document'
-include REXML
-
 data_filename = "codejam_utf-8.html"
 data_filepath = File.expand_path(File.dirname(__FILE__)) +
   "/test_data/" + data_filename
 
-html = File.open(data_filepath).read
+html = File.read(data_filepath)
 
-def restrict(html, starting_regexp, stopping_regexp)
-  start = html.index starting_regexp
-  stop = html.index stopping_regexp
-  html[start...stop]
-end
+# Extracts timetable
+start = html.index "<!-- ResultStationToStationAD -->"
+stop = html.index "</div><!-- ResultStationToStationContent -->"
+table = html[start...stop].gsub(/\r\n/, "").gsub(/\t/, "").gsub(/&nbsp/, "")
+rows = table.scan(/<tr[\s>].*?<\/tr>/)
 
-table = restrict html, "<!-- ResultStationToStationAD -->", "</div><!-- ResultStationToStationContent -->"
-
-table = table.gsub(/\r\n/, "")
-table = table.gsub(/\t/, "")
-
-trs = table.scan(/<tr[\s>].*?<\/tr>/)
-
-header = trs[0]
-columns = header.scan(/<td>.*?<\/td>/)
-columns.collect! do |field|
+# Extracts header
+header = rows.first
+header_fields = header.scan(/<td[> ].*?<\/td>/).collect! do |field|
   field.gsub(/<.*?>/, "")
 end
-puts columns.join "\t"
+rows.shift
 
-train_info = trs[1]
-columns = train_info.scan(/<td>.*?<\/td>/)
-columns.collect! do |field|
-  field.gsub(/<.*?>/, "")
+# Extracts operating info
+operating_infos = []
+rows.each do |row|
+  operating_infos << row.scan(/<td[> ].*?<\/td>/).collect do |field|
+    field.gsub(/<.*?>/, "")
+  end
 end
-puts columns.join "\t"
+
+# Output
+wanted_fields = [0, 4, 9, 12]
+
+header_fields.values_at(*wanted_fields).each do |field|
+  print field.ljust(10)
+end
+puts
+
+operating_infos.each do |info|
+  info.values_at(*wanted_fields).each do |field|
+    print field.ljust(10)
+  end
+  puts
+end
 
