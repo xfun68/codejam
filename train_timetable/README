@@ -1,0 +1,11 @@
+Write a script to extract the Train Timetable from the following
+page:
+
+    http://train.tielu.org/Search/%E5%8C%97%E4%BA%AC%E5%88%B0%E8%A5%BF%E5%AE%89.html
+
+The expected format of the final output looks like as below:
+
+    车次      出发时间  到达时间  硬座票价  硬卧票价  软卧票价
+    K1363     21:52     12:43     150       265       417
+    ...
+
