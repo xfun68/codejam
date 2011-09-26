@@ -91,3 +91,4 @@ describe Box do
   end
 
 end
+

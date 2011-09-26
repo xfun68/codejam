@@ -64,6 +64,5 @@ EOF
     end
   end
 
-  it "Refactor #decorate using Box"
-
 end
+

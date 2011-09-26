@@ -3,9 +3,8 @@ require 'box'
 class Framer
 
   def decorate(*args)
-    box = Box.new(args)
+    box = Box.new(args).ljust
     @width, @height = box.width, box.height
-    box = box.ljust
     box = box.shift(left_border).append(right_border)
     box = box.jack(top_border).stack(bottom_border)
     box.to_a
@@ -30,3 +29,4 @@ class Framer
   end
 
 end
+

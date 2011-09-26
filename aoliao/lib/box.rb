@@ -26,10 +26,12 @@ class Box
   end
 
   def stack another_box
-    result = []             # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    result << self.to_a     # result = self.to_a
-    result << another_box.to_a
-    result.flatten
+    # result = []                 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # result << self.to_a         # result = self.to_a
+    # result << another_box.to_a  # result << another_box.to_a
+    result = [self, another_box].inject([]) do |total, element|
+      total << element.to_a
+    end.flatten
     Box.new(result)
   end
 
@@ -51,3 +53,4 @@ class Box
   end
 
 end
+
