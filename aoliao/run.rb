@@ -2,8 +2,8 @@
 
 require 'lib/framer'
 
-def split_line(padding='-', opts={})
-  puts padding * opts.fetch(:size, 50)
+def split_line(opts={})
+  puts opts.fetch(:padding, '#') * opts.fetch(:size, 25)
 end
 
 framer = Framer.new
@@ -11,7 +11,7 @@ framer = Framer.new
 first_box = Box.new framer.decorate("aa", "bbb")
 second_box = Box.new framer.decorate("xyz", "x")
 
-split_line '~', :size => 70
+split_line :padding => '~', :size => 70
 
 puts first_box.to_a
 
@@ -52,4 +52,4 @@ split_line
 
 puts framer.decorate decorated_frist_box.shift(Box.new("ABCDEF", "Z")).to_a
 
-split_line '~', :size => 70
+split_line :padding => '~', :size => 70
