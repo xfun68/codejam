@@ -44,4 +44,8 @@ split_line
 decorated_frist_box = Box.new(framer.decorate(first_box.to_a))
 puts framer.decorate decorated_frist_box.append(second_box).to_a
 
+split_line
+
+puts framer.decorate decorated_frist_box.shift(Box.new("ABCDEF")).to_a
+
 split_line '~', :size => 70
