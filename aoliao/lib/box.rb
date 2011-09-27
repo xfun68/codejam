@@ -16,7 +16,7 @@ class Box
   def append another_box
     result = []
     [height, another_box.height].max.times do |i|
-      result << self.to_a.fetch(i, " " * width) + another_box.to_a.fetch(i, "")
+      result << self.row(i).ljust(width) + another_box.row(i)
     end
     Box.new(result)
   end
@@ -50,6 +50,10 @@ class Box
 
   def to_a
     @rows
+  end
+
+  def row line_number
+    @rows.fetch(line_number, "")
   end
 
 end

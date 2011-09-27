@@ -48,4 +48,8 @@ split_line
 
 puts framer.decorate decorated_frist_box.shift(Box.new("ABCDEF")).to_a
 
+split_line
+
+puts framer.decorate decorated_frist_box.shift(Box.new("ABCDEF", "Z")).to_a
+
 split_line '~', :size => 70

@@ -71,7 +71,7 @@ describe Box do
 
     context "when append anoter box" do
       subject { first_box.append(second_box) }
-      it { should equal(Box.new("FirstSecond", "FooBar")) }
+      it { should equal(Box.new("First Second", "FooBar")) }
     end
 
     context "when shift anoter box" do
