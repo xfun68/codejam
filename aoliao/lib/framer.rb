@@ -3,7 +3,7 @@ class Framer
   def decorate(*strings)
     self.text = strings
     self.text.collect do |row|
-      "|" + row.ljust(width) + "|"
+      "|" + row.ljust(@width) + "|"
     end.unshift(header).push(footer)
   end
 
@@ -14,6 +14,7 @@ class Framer
   def text=(strings)
     strings.delete("")
     @text = strings.flatten.compact
+    @width = @text.collect { |row| row.size }.max || 0
   end
 
   private
@@ -23,11 +24,7 @@ class Framer
   end
 
   def footer
-    "+" + "-" * width + "+"
-  end
-
-  def width
-    @width || @width = (self.text.collect { |row| row.size }.max || 0)
+    "+" + "-" * @width + "+"
   end
 end
 
