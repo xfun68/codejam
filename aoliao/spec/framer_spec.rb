@@ -14,5 +14,10 @@ describe Framer do
       let(:text) { "C" }
       it { should eql ["+-+", "|C|", "+-+"] }
     end
+
+    context "given a one line string" do
+      let(:text) { "String" }
+      it { should eql ["+------+", "|String|", "+------+"] }
+    end
   end
 end
