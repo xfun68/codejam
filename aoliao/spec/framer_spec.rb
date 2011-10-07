@@ -19,5 +19,10 @@ describe Framer do
       let(:text) { "String" }
       it { should eql ["+------+", "|String|", "+------+"] }
     end
+
+    context "given multiline string" do
+      let(:text) { ["Two", "Strings"] }
+      it { should eql ["+-------+", "|Two    |", "|Strings|", "+-------+"] }
+    end
   end
 end

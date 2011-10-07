@@ -1,10 +1,14 @@
 class Framer
 
-  def decorate(text)
+  def decorate(*text)
+    text = text.flatten
+    width = text.collect { |row| row.size }.max
     result = []
-    result << "+" + "-" * text.size + "+"
-    result << "|" + text + "|" if text.size > 0
-    result << "+" + "-" * text.size + "+"
+    result << "+" + "-" * width + "+"
+    text.each do |row|
+      result << "|" + row.ljust(width) + "|" if row.size > 0
+    end
+    result << "+" + "-" * width + "+"
     result
   end
 end
