@@ -24,5 +24,15 @@ describe Framer do
       let(:text) { ["Two", "Strings"] }
       it { should eql ["+-------+", "|Two    |", "|Strings|", "+-------+"] }
     end
+
+    context "given nil value" do
+      let(:text) { [nil, "String"] }
+      it { should eql ["+------+", "|String|", "+------+"] }
+    end
+
+    context "given without any argument" do
+      subject { Framer.new.decorate() }
+      it { should eql ["++", "++"] }
+    end
   end
 end
