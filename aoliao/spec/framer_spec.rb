@@ -36,3 +36,4 @@ describe Framer do
     end
   end
 end
+
