@@ -9,5 +9,10 @@ describe Framer do
       let(:text) { "" }
       it { should eql ["++", "++"] }
     end
+
+    context "given a single character" do
+      let(:text) { "C" }
+      it { should eql ["+-+", "|C|", "+-+"] }
+    end
   end
 end
