@@ -19,6 +19,11 @@ describe Checkout do
       let(:goods) { "A" }
       it { should eql(50) }
     end
+
+    context "given multiple different goods" do
+      let(:goods) { "AB" }
+      it { should eql(80) }
+    end
   end
 end
 
