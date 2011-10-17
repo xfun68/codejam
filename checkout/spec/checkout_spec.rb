@@ -24,6 +24,11 @@ describe Checkout do
       let(:goods) { "AB" }
       it { should eql(80) }
     end
+
+    context "given a combination of favourable goods" do
+      let(:goods) { "AAA" }
+      it { should eql(130) }
+    end
   end
 end
 
