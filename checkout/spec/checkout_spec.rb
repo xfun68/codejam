@@ -1,7 +1,7 @@
 require 'checkout'
 
 describe Checkout do
-  let(:co) { Checkout.new }
+  let(:co) { Checkout.new(PRICING_RULES) }
 
   describe "#total_price" do
     subject { co.total_price }
