@@ -5,7 +5,7 @@ require 'lib/checkout'
 co = Checkout.new(PRICING_RULES)
 goods = ARGV[0] || ""
 
-goods.each do |item|
+goods.split(//).each do |item|
   co.scan(item)
 end
 
