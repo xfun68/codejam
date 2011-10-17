@@ -25,8 +25,9 @@ class Checkout
     goods_list.cycle(@goods.count) do |list|
       PRICING_RULES.each do |rule|
         if list.include?(rule.keys.first.to_s)
-          list.delete!(rule.keys.first.to_s)
+          list.sub!(rule.keys.first.to_s, "")
           result += rule.values.first
+          break
         end
       end
     end
