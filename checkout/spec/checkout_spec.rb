@@ -34,6 +34,16 @@ describe Checkout do
       let(:goods) { "AAAAAA" }
       it { should eql(260) }
     end
+
+    context "given a combination with a single goods" do
+      let(:goods) { "AAAA" }
+      it { should eql(180) }
+    end
+
+    context "given multiple combinations and different single goods in disorder" do
+      let(:goods) { "DABABA" }
+      it { should eql(190) }
+    end
   end
 end
 

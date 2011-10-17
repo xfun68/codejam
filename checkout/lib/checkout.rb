@@ -2,15 +2,10 @@ class Checkout
   PRICING_RULES = [
     {:AAA => 130},
     {:A => 50},
-
     {:BB => 45},
-
     {:B => 30},
-
     {:C => 20},
-
     {:D => 15},
-
     {:EEE => 34},
     {:E => 17},
   ]
@@ -36,6 +31,7 @@ class Checkout
 
   def scan(item)
     @goods << item
+    @goods.sort!
   end
 end
 
