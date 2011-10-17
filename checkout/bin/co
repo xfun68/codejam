@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'lib/checkout'
+
+co = Checkout.new(PRICING_RULES)
+goods = ARGV[0] || ""
+
+goods.each do |item|
+  co.scan(item)
+end
+
+puts co.total_price
+
