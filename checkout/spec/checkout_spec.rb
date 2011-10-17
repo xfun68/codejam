@@ -10,9 +10,14 @@ describe Checkout do
       goods.split(//).each { |item| co.scan(item) }
     end
 
-    context "when given without goods" do
+    context "given without any goods" do
       let(:goods) { "" }
       it { should eql(0) }
+    end
+
+    context "given single goods" do
+      let(:goods) { "A" }
+      it { should eql(50) }
     end
   end
 end
