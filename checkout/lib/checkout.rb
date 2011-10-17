@@ -1,17 +1,20 @@
 class Checkout
+  PRICING_RULES = {
+    :A => 50,
+    :B => 30,
+    :C => 20,
+    :D => 15,
+    :E => 17
+  }
 
   def initialize
     @goods = []
   end
 
   def total_price
-    total = 0
-    @goods.each do |item|
-      total += {
-        :A => 50
-      }.fetch(item.to_sym, 0)
+    @goods.inject(0) do |result, item|
+      result += PRICING_RULES.fetch(item.to_sym, 0)
     end
-    total
   end
 
   def scan(item)
