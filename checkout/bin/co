@@ -3,11 +3,9 @@
 require 'lib/checkout'
 
 co = Checkout.new(PRICING_RULES)
-goods = ARGV[0] || ""
 
-goods.split(//).each do |item|
-  co.scan(item)
+ARGV.each do |goods|
+  goods.split(//).each { |item| co.scan(item) }
+  puts co.total_price
 end
-
-puts co.total_price
 
