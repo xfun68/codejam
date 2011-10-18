@@ -17,16 +17,18 @@ class Checkout
 
   def calculate_price
     @total_price = 0
-    goods_list = @goods.join
-    goods_list.cycle(@goods.count) do |list|
-      @pricing_rules.each do |rule|
-        if list.include?(rule.keys.first.to_s)
-          list.sub!(rule.keys.first.to_s, "")
-          @total_price += rule.values.first
-          break
-        end
-      end
+    @pricing_rules.inject(@goods.join) do |goods_list, pricing_rule|
+      calculate_price_for_goods_that_match(pricing_rule, goods_list)
     end
+  end
+
+  def calculate_price_for_goods_that_match(pricing_rule, goods_list)
+    goods, price = pricing_rule.keys.first.to_s, pricing_rule.values.first
+    while goods_list.include?(goods) do
+      goods_list.sub!(goods, "")
+      @total_price += price
+    end
+    goods_list
   end
 end
 
