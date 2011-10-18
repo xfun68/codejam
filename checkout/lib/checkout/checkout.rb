@@ -8,27 +8,30 @@ class Checkout
   end
 
   def scan(item)
-    @goods << item
-    @goods.sort!
+    append_new item
     calculate_price
   end
 
   private
 
+  def append_new(item)
+    @goods << item.upcase
+    @goods_list = @goods.join.split(//).sort.join
+  end
+
   def calculate_price
     @total_price = 0
-    @pricing_rules.inject(@goods.join) do |goods_list, pricing_rule|
-      calculate_price_for_goods_that_match(pricing_rule, goods_list)
+    @pricing_rules.each do |pricing_rule|
+      calculate_price_for_goods_that_match(pricing_rule)
     end
   end
 
-  def calculate_price_for_goods_that_match(pricing_rule, goods_list)
+  def calculate_price_for_goods_that_match(pricing_rule)
     goods, price = pricing_rule.keys.first.to_s, pricing_rule.values.first
-    while goods_list.include?(goods) do
-      goods_list.sub!(goods, "")
+    while @goods_list.include?(goods) do
+      @goods_list.sub!(goods, "")
       @total_price += price
     end
-    goods_list
   end
 end
 
