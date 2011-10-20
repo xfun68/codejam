@@ -1,20 +1,16 @@
+require 'lib/box'
+
 class Framer
 
   def decorate(*strings)
-    self.text = strings
-    @text.map { |row| decorate_row(row) }.unshift(header).push(footer)
+    @text = Box.new(strings)
+    @text.to_a.map { |row| decorate_row(row) }.unshift(header).push(footer)
   end
 
   private
 
-  def text=(strings)
-    strings.delete("")
-    @text = strings.flatten.compact
-    @width = @text.collect { |row| row.size }.max || 0
-  end
-
   def decorate_row(string)
-    "|" + string.ljust(@width) + "|"
+    "|" + string.ljust(@text.width) + "|"
   end
 
   def header
@@ -22,7 +18,7 @@ class Framer
   end
 
   def footer
-    "+" + "-" * @width + "+"
+    "+" + "-" * @text.width + "+"
   end
 end
 
