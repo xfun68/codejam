@@ -3,7 +3,8 @@ require 'lcd'
 describe LCDNumbers do
 
   describe "#display" do
-    subject { LCDNumbers.new.display(numbers) }
+    lcd = LCDNumbers.new
+    subject { lcd.display(numbers) }
 
     context "given only one single number" do
       let(:numbers) { "0" }
@@ -21,6 +22,23 @@ describe LCDNumbers do
                         "    - ",
                         "| |  |",
                         " -  - " ]) }
+    end
+  end
+
+  describe "#scale" do
+    lcd = LCDNumbers.new
+    subject { lcd.display("03") }
+
+    times = 2
+    context "when scale #{times} times" do
+      lcd.scale = times
+      it { should eql([ " --  -- ",
+                        "|  |   |",
+                        "|  |   |",
+                        "     -- ",
+                        "|  |   |",
+                        "|  |   |",
+                        " --  -- " ]) }
     end
   end
 end
