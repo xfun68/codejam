@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'lib/lcd'
+require 'optparse'
+
+options = {:size => 1}
+OptionParser.new do |opts|
+  opts.banner = "Usage: lcd [options] <numbers>"
+
+  opts.on("-s", "--size SIZE", "Set scale size") do |v|
+    options[:size] = v.to_i
+  end
+end.parse!
+
+numbers = ARGV.join
+lcd = LCDNumbers.new
+
+lcd.scale = options[:size]
+puts lcd.display(numbers)
+
