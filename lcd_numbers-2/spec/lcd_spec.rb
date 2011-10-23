@@ -13,6 +13,15 @@ describe LCD do
                         "| |",
                         " - "]) }
     end
+
+    context "given multiple numbers" do
+      let(:numbers) { "90" }
+      it { should eql([ " -  - ",
+                        "| || |",
+                        " -    ",
+                        "  || |",
+                        " -  - "]) }
+    end
   end
 end
 
