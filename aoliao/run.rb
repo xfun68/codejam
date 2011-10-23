@@ -1,6 +1,6 @@
 #! /usr/bin/ruby -I lib
 
-require 'lib/framer'
+require_relative 'lib/framer'
 
 def split_line(opts={})
   puts opts.fetch(:padding, '#') * opts.fetch(:size, 25)

@@ -1,4 +1,4 @@
-require 'lib/checkout'
+require_relative 'lib/checkout'
 
 describe Checkout do
   let(:co) { Checkout.new(PRICING_RULES) }

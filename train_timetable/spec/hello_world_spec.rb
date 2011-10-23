@@ -1,4 +1,4 @@
-require 'hello_world'
+require_relative '../lib/hello_world'
 
 describe 'Greeting' do
 

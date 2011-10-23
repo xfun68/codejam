@@ -1,4 +1,4 @@
-require 'box'
+require_relative '../lib/box'
 
 describe Box do
   subject { Box.new(data) }

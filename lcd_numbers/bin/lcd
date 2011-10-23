@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'lib/lcd'
+require_relative 'lib/lcd'
 require 'optparse'
 
 options = {:size => 1}

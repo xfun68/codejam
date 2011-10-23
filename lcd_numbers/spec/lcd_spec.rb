@@ -1,4 +1,4 @@
-require 'lcd'
+require_relative '../lib/lcd'
 
 describe LCDNumbers do
 

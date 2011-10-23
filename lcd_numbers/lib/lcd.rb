@@ -1,2 +1,2 @@
-require 'lib/lcd/lcd_numbers'
+require_relative 'lcd/lcd_numbers'
 

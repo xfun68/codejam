@@ -1,4 +1,4 @@
-require 'box'
+require_relative 'box'
 
 class Framer
 

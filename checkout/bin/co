@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'lib/checkout'
+require_relative 'lib/checkout'
 
 co = Checkout.new(PRICING_RULES)
 

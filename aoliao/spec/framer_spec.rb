@@ -1,4 +1,4 @@
-require 'framer'
+require_relative '../lib/framer'
 
 describe Framer do
 

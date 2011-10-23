@@ -1,2 +1,2 @@
-require 'lib/checkout/checkout'
-require 'lib/checkout/pricing_rules'
+require_relative 'lib/checkout/checkout'
+require_relative 'lib/checkout/pricing_rules'
