@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/lcd'
+require 'optparse'
+
+exit if ARGV.empty?
+
+options = {:scale => 1}
+op = OptionParser.new do |opts|
+  opts.banner = "Usage: lcd [options] <numbers>"
+
+  opts.on('-s', '--scale SCALE', 'Set the scale of digit') do |v|
+    options[:scale] = v.to_i
+  end
+
+  opts.on('-h', '--help', 'Show this info') do |v|
+    puts opts
+    exit
+  end
+end.parse!
+
+lcd = LCD.new
+lcd.scale = options[:scale]
+puts lcd.display(ARGV.join)
+
