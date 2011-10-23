@@ -23,5 +23,26 @@ describe LCD do
                         " -  - "]) }
     end
   end
+
+  describe "#scale" do
+    let(:lcd) { LCD.new }
+    subject {
+      lcd.scale = scale
+      lcd.display("90")
+    }
+
+    context "when set scale to more than 1" do
+      let(:scale) { 3 }
+      it { should eql([ " ---  --- ",
+                        "|   ||   |",
+                        "|   ||   |",
+                        "|   ||   |",
+                        " ---      ",
+                        "    ||   |",
+                        "    ||   |",
+                        "    ||   |",
+                        " ---  --- "]) }
+    end
+  end
 end
 
