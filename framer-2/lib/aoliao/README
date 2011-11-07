@@ -1,0 +1,12 @@
+# TODO
+# add #each_line && #each_line_with_index
+# remove #to_a
+# user define matcher printer
+# autotest as basic dev environment
+#
+# #spread seems is not need to be a public method
+# rewrite code for testing #spread using expect{}.to change{}.from().to()
+#
+# Box#strip Box#lstrip Box#rstrip
+# Box#center Box#ljust Box#rjust
+

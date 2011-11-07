@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby -w
+
+require 'lib/aoliao'
+
+framer = Framer.new
+
+a = Box.new("AA")
+b = Box.new("BBB")
+ab = Box.new(["AA", "BBB"])
+
+af = framer.decorate(a)
+bf = framer.decorate(b)
+abf = framer.decorate(ab)
+
+aff = framer.decorate(af)
+bff = framer.decorate(bf)
+abff = framer.decorate(abf)
+
+abffabff = framer.decorate(abff | abf)
+abfabfff = framer.decorate(abf - abff)
+
+aabffabff = a | abffabff
+abffabffa = abffabff | a
+ababffabff = ab | abffabff
+abffabffab = abffabff | ab
+
+aabffabff_ = a - abffabff
+abffabffa_ = abffabff - a
+ababffabff_ = ab - abffabff
+abffabffab_ = abffabff - ab
+
+afffffffff = ab
+10.times do
+  afffffffff = framer.decorate(afffffffff)
+end
+
+
+def splitor(opts={})
+  opts = {:width => 4, :height => 1, :string => " "}.merge!(opts)
+  Box.new([opts[:string] * opts[:width]] * opts[:height])
+end
+
+puts a | splitor | b | splitor | ab
+puts
+puts af | splitor | bf | splitor | abf
+puts
+puts aff | splitor | bff | splitor | abff
+puts
+puts abffabff | splitor | abfabfff
+puts
+puts aabffabff | splitor | ababffabff | splitor | abffabffa | splitor | abffabffab
+puts
+puts aabffabff_ | splitor | ababffabff_ | splitor | ababffabff_ | splitor | abffabffab_
+
+super_guy = (abffabff-abfabfff) | ((splitor|abfabfff)-abffabff)
+puts
+puts afffffffff | splitor | super_guy
+
+puts
+puts splitor(:width => abffabff.width) | abffabff
+puts abffabff | abffabff | abffabff
+puts splitor(:width => abffabff.width) | abffabff
+
+puts
+puts splitor(:height => abffabff.height) - abffabff \
+                      |                             \
+     abffabff - abffabff - abffabff                 \
+                      |                             \
+     splitor(:height => abffabff.height) - abffabff
+
