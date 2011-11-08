@@ -1,0 +1,7 @@
+source :rubygems
+
+gem 'rspec'
+gem 'ZenTest'
+gem 'autotest-growl'
+gem 'autotest-fsevent'
+
