@@ -26,6 +26,18 @@ describe Framer do
                           "|bar|",
                           "+---+" ]) }
       end
+
+      context "given lines are in the different length" do
+        let(:strings) { ["I", "am", "a", "multiple", "lines", "string"] }
+        it { should eql([ "+--------+",
+                          "|I       |",
+                          "|am      |",
+                          "|a       |",
+                          "|multiple|",
+                          "|lines   |",
+                          "|string  |",
+                          "+--------+" ]) }
+      end
     end
   end
 end

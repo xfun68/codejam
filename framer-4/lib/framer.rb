@@ -1,11 +1,15 @@
 class Framer
 
   def decorate(*strings)
-    @text = strings.flatten
+    self.text = strings
     [header, text_with_side_border, footer].flatten
   end
 
   private
+
+  def text=(strings)
+    @text = strings.flatten.reject { |line| line.empty? }
+  end
 
   def header
     "+" + "-" * width + "+"
@@ -15,14 +19,14 @@ class Framer
     header
   end
 
-  def width
-    @text.map { |line| line.length }.max || 0
-  end
-
   def text_with_side_border
     @text.map do |line|
-      "|#{line}|" unless line.empty?
+      "|#{line.ljust(width)}|"
     end.compact
+  end
+
+  def width
+    @text.map { |line| line.length }.max || 0
   end
 end
 
