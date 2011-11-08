@@ -23,6 +23,17 @@ describe Framer do
       ]
       it { should eql(expected) }
     end
+
+    context "when text has multiple lines in same length" do
+      let(:text) { ["foo", "bar"] }
+      expected = [
+        "+---+",
+        "|foo|",
+        "|bar|",
+        "+---+"
+      ]
+      it { should eql(expected) }
+    end
   end
 end
 
