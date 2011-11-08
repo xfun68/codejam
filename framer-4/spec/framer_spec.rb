@@ -7,7 +7,8 @@ describe Framer do
 
     context "when strings is empty" do
       let(:strings) { "" }
-      it { should eql(["++", "++"]) }
+      it { should eql([ "++",
+                        "++" ]) }
     end
   end
 end
