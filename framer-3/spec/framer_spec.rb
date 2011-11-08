@@ -13,6 +13,16 @@ describe Framer do
       ]
       it { should eql(expected) }
     end
+
+    context "when text only has a single line" do
+      let(:text) { "foo" }
+      expected = [
+        "+---+",
+        "|foo|",
+        "+---+"
+      ]
+      it { should eql(expected) }
+    end
   end
 end
 
