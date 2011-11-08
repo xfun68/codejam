@@ -2,7 +2,7 @@ class Framer
 
   def decorate(*text)
     @text = text.flatten
-    result = [header, text_with_side_border, footer].flatten
+    [header, text_with_side_border, footer].flatten
   end
 
   private
@@ -12,7 +12,7 @@ class Framer
   end
 
   def footer
-    "+#{"-" * width}+"
+    "+" + "-" * width + "+"
   end
 
   def width
