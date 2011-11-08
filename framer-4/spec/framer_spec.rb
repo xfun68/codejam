@@ -10,6 +10,13 @@ describe Framer do
       it { should eql([ "++",
                         "++" ]) }
     end
+
+    context "when strings has a single line" do
+      let(:strings) { "foo" }
+      it { should eql([ "+---+",
+                        "|foo|",
+                        "+---+" ]) }
+    end
   end
 end
 
