@@ -17,6 +17,16 @@ describe Framer do
                         "|foo|",
                         "+---+" ]) }
     end
+
+    context "when strings has multiple lines" do
+      context "given lines are in the same length" do
+        let(:strings) { ["foo", "bar"] }
+        it { should eql([ "+---+",
+                          "|foo|",
+                          "|bar|",
+                          "+---+" ]) }
+      end
+    end
   end
 end
 
