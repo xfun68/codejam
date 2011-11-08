@@ -34,6 +34,20 @@ describe Framer do
       ]
       it { should eql(expected) }
     end
+
+    context "when text has multiple lines in different length" do
+      let(:text) { ["I", "am", "a", "multiple", "string"] }
+      expected = [
+        "+--------+",
+        "|I       |",
+        "|am      |",
+        "|a       |",
+        "|multiple|",
+        "|string  |",
+        "+--------+"
+      ]
+      it { should eql(expected) }
+    end
   end
 end
 
