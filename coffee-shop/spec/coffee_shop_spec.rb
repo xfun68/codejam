@@ -6,7 +6,7 @@ describe CoffeeShop do
     subject { CoffeeShop.new.order(coffee) }
 
     context "when the coffee is HomeBlend" do
-      let (:coffee) { "Homeblend" }
+      let (:coffee) { "HomeBlend" }
       it { should eql(0.89) }
     end
   end
