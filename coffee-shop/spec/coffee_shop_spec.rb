@@ -2,8 +2,8 @@ require 'coffee_shop'
 
 describe CoffeeShop do
 
-  describe "#order" do
-    subject { CoffeeShop.new.order(coffee, sauces) }
+  describe "#order_foods" do
+    subject { CoffeeShop.new.order_foods(coffee, sauces) }
 
     context "when the coffee is HomeBlend" do
       let (:coffee) { "HomeBlend" }
