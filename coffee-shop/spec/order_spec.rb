@@ -11,7 +11,7 @@ describe Order do
       its(:total_price) { should eql(0.89) }
     end
 
-    context "given only a cup of coffee and some sorces" do
+    context "given only a cup of coffee and some sauces" do
       order = Order.new
       subject { order }
       order.add_item("HomeBlend", 0.89)
@@ -23,7 +23,7 @@ describe Order do
   end
 
   describe "#print" do
-    it "prints a list for ordered coffee and sorces with total price" do
+    it "prints a list for ordered coffee and sauces with total price" do
       order = Order.new
       order.add_item("HomeBlend", 0.89)
       order.add_item("milk", 0.10)
