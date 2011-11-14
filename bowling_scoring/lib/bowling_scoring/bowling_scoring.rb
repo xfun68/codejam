@@ -19,17 +19,26 @@ class Frame
   def is_spare
     10 == (@scores[0] + @scores[1])
   end
+
+  def is_strike
+    10 == @scores[0]
+  end
 end
 
 class BowlingScoring
 
   def score(scores)
-    spared = false
+    last_frame = Frame.new([0, 0])
     scores.inject(0) do |total, score|
       frame = Frame.new(score)
-      is_last_frame_spare = spared
-      spared = frame.is_spare
-      total += (frame.total_score + (is_last_frame_spare ? frame.first_score : 0))
+      total += frame.total_score
+      if last_frame.is_strike
+        total += frame.total_score
+      elsif last_frame.is_spare
+        total += frame.first_score
+      end
+      last_frame = frame
+      total
     end
   end
 end
