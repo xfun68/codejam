@@ -1,26 +1,21 @@
 class Frame
 
-  def initialize(scores)
+  def initialize(scores = [0, 0])
     @scores = scores
   end
 
-  def first_score
-    @scores[0]
+  def total_score(last_frame)
+    total = @scores[0] + @scores[1]
+    total += total if last_frame.is_strike?
+    total += @scores[0] if last_frame.is_spare?
+    total
   end
 
-  def second_score
-    @scores[1]
+  def is_spare?
+    (@scores[0] < 10) && (10 == (@scores[0] + @scores[1]))
   end
 
-  def total_score
-    @scores[0] + @scores[1]
-  end
-
-  def is_spare
-    10 == (@scores[0] + @scores[1])
-  end
-
-  def is_strike
+  def is_strike?
     10 == @scores[0]
   end
 end
@@ -28,18 +23,13 @@ end
 class BowlingScoring
 
   def score(scores)
-    last_frame = Frame.new([0, 0])
-    scores.inject(0) do |total, score|
-      frame = Frame.new(score)
-      total += frame.total_score
-      if last_frame.is_strike
-        total += frame.total_score
-      elsif last_frame.is_spare
-        total += frame.first_score
-      end
-      last_frame = frame
-      total
+    total = 0
+    scores.inject(Frame.new) do |last_frame, score|
+      current_frame = Frame.new(score)
+      total += current_frame.total_score(last_frame)
+      current_frame
     end
+    total
   end
 end
 
