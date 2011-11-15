@@ -34,9 +34,7 @@ class LCD
 
   def scale_h(digit)
     digit.map do |line|
-      line_as_array = line.split(//)
-      line_as_array[1..1] = line_as_array[1] * @scale
-      line_as_array.join
+      line[0] + line[1] * @scale + line[2]
     end
   end
 
