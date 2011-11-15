@@ -19,7 +19,7 @@ class LCD
   end
 
   def display(numbers)
-    join_each(scaled_digits(transformed_from(numbers)))
+    join_each scaled_digits transformed_from(numbers)
   end
 
   private
