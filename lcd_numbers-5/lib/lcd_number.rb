@@ -74,6 +74,10 @@ class LCDNumber
   end
 
   def scale
+    scale_horizontally
+  end
+
+  def scale_horizontally
     @digits = @digits.map do |digit|
       digit.map do |line|
         line[0] + line[1] * @scale + line[2]
