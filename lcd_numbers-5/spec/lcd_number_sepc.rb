@@ -22,6 +22,15 @@ describe LCDNumber do
                         "  |",
                         "   " ]) }
     end
+
+    context "multiple numbers 007" do
+      let(:numbers) { "007" }
+      it { should eql([ " -  -  - ",
+                        "| || |  |",
+                        "         ",
+                        "| || |  |",
+                        " -  -    " ]) }
+    end
   end
 end
 
