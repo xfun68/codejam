@@ -32,5 +32,24 @@ describe LCDNumber do
                         " -  -    " ]) }
     end
   end
+
+  describe "#scale" do
+    lcd = LCDNumber.new
+    subject { lcd.display(numbers) }
+
+    context "when is 3" do
+      let(:numbers) { "007" }
+      lcd.scale = 3
+      it { should eql([ " ---  ---  --- ",
+                        "|   ||   |    |",
+                        "|   ||   |    |",
+                        "|   ||   |    |",
+                        "               ",
+                        "|   ||   |    |",
+                        "|   ||   |    |",
+                        "|   ||   |    |",
+                        " ---  ---      " ]) }
+    end
+  end
 end
 
