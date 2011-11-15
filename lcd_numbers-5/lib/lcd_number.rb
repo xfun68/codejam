@@ -53,11 +53,22 @@ class LCDNumber
   ]
 
   def display(numbers)
-    digits = numbers.chars.map do |char|
+    @numbers = numbers
+    transform_to_digits
+    joined_digits
+  end
+
+  private
+
+  def transform_to_digits
+    @digits = @numbers.chars.map do |char|
       DIGITS[char.to_i]
     end
-    (0...digits.first.size).map do |line_number|
-      digits.inject("") do |line, digit|
+  end
+
+  def joined_digits
+    (0...@digits.first.size).map do |line_number|
+      @digits.inject("") do |line, digit|
         line += digit[line_number]
       end
     end
